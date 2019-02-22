@@ -25,10 +25,10 @@ Learning by doing will require searching/reading software documentation, experim
 
 **Enrollment:** 
 - **PSTAT 134**: Through GOLD. Waiting lists will be processed by PSTAT office
-- **PSTAT 234**: Through application found here: https://goo.gl/forms/vFsSCOK9FjnlVuCd2
+- **PSTAT 234**: Through application found here: [https://goo.gl/forms/vFsSCOK9FjnlVuCd2](https://goo.gl/forms/vFsSCOK9FjnlVuCd2)
 
 **INT 15: Data Science Principles & Techniques (Spring 2019)**
-Students that do not need to take PSTAT 134 or 234 to fulfill degree requirements are encouraged to consider a similar course offered as INT 15. The course will be co-taught by CS and PSTAT faculty members. More information can be found here: https://ucsb-int15.github.io/
+Students that do not need to take PSTAT 134 or 234 to fulfill degree requirements are encouraged to consider a similar course offered as INT 15. The course will be co-taught by CS and PSTAT faculty members. More information can be found here: [https://ucsb-int15.github.io/](https://ucsb-int15.github.io/)
 
 
 
