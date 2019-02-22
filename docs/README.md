@@ -2,7 +2,7 @@
 title: UCSB PSTAT 134/234
 ---
 
-# PSTAT 134/234: Data Science Principles & Techniques
+# PSTAT 134/234: Statistical Data Science
 
 **Instructor:** Sang-Yun Oh
 
