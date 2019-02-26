@@ -7,8 +7,8 @@ title: UCSB PSTAT 134/234
 **Instructor:** Sang-Yun Oh
 
 **Prerequisites:**
-- PSTAT 134: PSTAT 120B and PSTAT 10 with a minimum grade of C or better, and one course from Computer Science 8, or 16 or Engineering 3.
-- PSTAT 234: PSTAT 126 or equivalent with a minimum grade of C, and one course from CS 8, or CS 16, or Engineering 3, or equivalent.
+- PSTAT 134: PSTAT 120B and PSTAT 10 with a minimum grade of C or better, and one course from Computer Science 8, or 16 or Engineering 3
+- PSTAT 234: PSTAT 126 or equivalent (regression analysis) and CS 8, or CS 16, or Engineering 3, or equivalent (intro programming course)
 
 **Catalog description:** Overview and use of data science tools in Python for data retrieval, analysis, visualization, reproducible research and automated report generation. Case studies will illustrate practical use of these tools.  This new course will focus on concepts that are relevant for data science by using some of the popular software tools in this area. Doing data science is more than using isolated methods. Creatively using a collection of concepts and domain knowledge is emphasized to clean, transform, analyze, and present data. Concepts in data ethics and privacy will also be discussed. Case studies will illustrate real usage scenarios.
 
