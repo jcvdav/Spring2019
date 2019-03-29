@@ -1,7 +1,5 @@
 # PSTAT 134/234 - Statistical Data Science
 
----
-
 ## Instructor: Sang-Yun Oh
 
 - Email: [syoh@ucsb.edu](mailto:syoh@ucsb.edu)
@@ -25,8 +23,6 @@
 
 # Course Information 
 
----
-
 ## Grading
 
 * Attendance in lectures and sections are required (10%)  
@@ -47,8 +43,6 @@
 
 
 # Tentative course outline
-
----
 
 * **Week 1** (4/1-4/5): Data and uncertainty   
     - Computing: Jupyter notebook and Python primer
@@ -76,8 +70,6 @@
 * **Final Projects** (6/14): Final project poster session
 
 # Computational Environment
-
----
 
 ## Github (optional but recommended)
 
