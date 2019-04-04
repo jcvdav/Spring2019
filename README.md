@@ -1,14 +1,52 @@
 # PSTAT 134/234 - Statistical Data Science
 
+
+# Announcements
+
+
+## April 4, 2019
+
+- [Sections and office hours](https://github.com/UCSB-PSTAT-134-234/Spring2019#instructor-sang-yun-oh)  
+    _Please check for updates to TBD items_
+
+- Course material link: https://bit.ly/2JL32Z6  
+    _Modifying the directory may cause merge conflict. You can create a working copy before modifying files_
+
+- Jupyter notebook server: https://pstat134.lsit.ucsb.edu  
+    _Some errors have been reported: [report server errors on Piazza](https://piazza.com/class/jtt86pasbysm4?cid=10)_
+
+----------
+
 ## Instructor: Sang-Yun Oh
 
 - Email: [syoh@ucsb.edu](mailto:syoh@ucsb.edu)
 
-- Lectures: TR 9:30 am - 10:45 am
+- Lectures: TR 9:30 am - 10:45 am @ PHELP 3515
 
-- Office: South Hall 5514
+- Office hours: Wednesdays 5:00 - 7:00 pm @ South Hall 5514
+
+## TA: Javier Zapata
+
+- Email: [jzapata@ucsb.edu](mailto:jzapata@ucsb.edu)
+
+- Sections:  
+    Wednesdays 9:00 - 9:50 am @ PHELP1513  
+    Wednesdays 12:00 - 12:50 am @ PHELP1513
 
 - Office hours: TBD
+
+
+## TA: Zhipu (Aaron) Zhou
+
+- Email: [zhipu@ucsb.edu](mailto:zhipu@ucsb.edu)
+
+- Sections:  
+    Fridays 9:00 - 9:50 am @ TBD
+
+- Office hours: TBD
+
+
+# Course Information 
 
 
 ## Course Resources
@@ -20,8 +58,9 @@
 
 - GauchoSpace (homework submission): https://gauchospace.ucsb.edu/courses/course/view.php?id=44611
 
+- Jupyter notebook server: https://pstat134.lsit.ucsb.edu  
+    _Note: The course notebook server is for this course only. Your work can be inspected by teaching staff at any time_
 
-# Course Information 
 
 ## Grading
 
@@ -68,18 +107,3 @@
 * **Week 10** (6/3-6/7): TBD
 
 * **Final Projects** (6/14): Final project poster session
-
-# Computational Environment
-
-## Github (optional but recommended)
-
-* [Github Student Account](https://education.github.com/pack)
-
-
-## Jupyterhub
-
-* [Course Jupyter Hub](https://pstat134.lsit.ucsb.edu)
-
-* For PSTAT 134/234 coursework only
-
-* Your work can be inspected by teaching staff at any time
