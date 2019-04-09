@@ -1,8 +1,12 @@
 # PSTAT 134/234 - Statistical Data Science
 
-
 # Announcements
 
+## April 5, 2019
+
+- [TAs' Office hours updated](https://github.com/UCSB-PSTAT-134-234/Spring2019#ta-javier-zapata)
+
+- [Third section location updated](https://github.com/UCSB-PSTAT-134-234/Spring2019#ta-zhipu-aaron-zhou)
 
 ## April 4, 2019
 
@@ -13,7 +17,7 @@
     _Modifying the directory may cause merge conflict. You can create a working copy before modifying files_
 
 - Jupyter notebook server: https://pstat134.lsit.ucsb.edu  
-    _Some errors have been reported: [report server errors on Piazza](https://piazza.com/class/jtt86pasbysm4?cid=10)_
+    _Server errors: [report on Piazza](https://piazza.com/class/jttf1pa8is5eb?cid=9)_
 
 ----------
 
@@ -30,10 +34,11 @@
 - Email: [jzapata@ucsb.edu](mailto:jzapata@ucsb.edu)
 
 - Sections:  
+
     Wednesdays 9:00 - 9:50 am @ PHELP1513  
     Wednesdays 12:00 - 12:50 am @ PHELP1513
 
-- Office hours: TBD
+- Office hours: Monday 3:00 - 5:00 pm @ South Hall 5431-?
 
 
 ## TA: Zhipu (Aaron) Zhou
@@ -41,9 +46,10 @@
 - Email: [zhipu@ucsb.edu](mailto:zhipu@ucsb.edu)
 
 - Sections:  
-    Fridays 9:00 - 9:50 am @ TBD
 
-- Office hours: TBD
+    Fridays 9:00 - 9:50 am @ PHELP1513
+
+- Office hours: Friday 10:00 - 11:00 am @ South Hall 5431-J 
 
 
 # Course Information 
