@@ -2,6 +2,10 @@
 
 # Announcements
 
+## April 9, 2019
+
+- https://ucsb.zoom.us/j/275657667
+
 ## April 5, 2019
 
 - [TAs' Office hours updated](https://github.com/UCSB-PSTAT-134-234/Spring2019#ta-javier-zapata)
