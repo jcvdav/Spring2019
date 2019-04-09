@@ -38,7 +38,7 @@
     Wednesdays 9:00 - 9:50 am @ PHELP1513  
     Wednesdays 12:00 - 12:50 am @ PHELP1513
 
-- Office hours: Monday 3:00 - 5:00 pm @ South Hall 5431-?
+- Office hours: Monday 3:00 - 5:00 pm @ South Hall 5431-Q
 
 
 ## TA: Zhipu (Aaron) Zhou
