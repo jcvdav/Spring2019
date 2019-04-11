@@ -4,6 +4,8 @@
 
 ## April 11, 2019
 
+- https://ucsb.zoom.us/j/957723787
+
 - Homework 1 has been posted (due Saturday, April 20)  
     https://bit.ly/2Ku27wH
     
