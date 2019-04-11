@@ -4,8 +4,12 @@
 
 ## April 11, 2019
 
-- Homework 1 has been posted (due on Saturday, April 20)  
+- Homework 1 has been posted (due Saturday, April 20)  
     https://bit.ly/2Ku27wH
+    
+- _Petition to Enroll in a Graduate Course_ forms will be processed by tomorrow morning
+
+- Request access to GauchoSpace: https://piazza.com/class/jttf1pa8is5eb?cid=12
 
 ## April 9, 2019
 
