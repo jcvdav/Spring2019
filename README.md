@@ -8,11 +8,11 @@
 
 - Midterm: May 9 during class time
 
-- okpy.org and Homework 1
+- [okpy.org](https://okpy.org/) and Homework 1
 
 - Waiting lists delays
 
-- PSTAT 234 forms for pick up
+- PSTAT 234 graduate class petition forms are ready for pick up
 
 ## April 11, 2019
 
