@@ -2,6 +2,16 @@
 
 # Announcements
 
+## April 16, 2019
+
+- Midterm: May 9 during class time
+
+- okpy.org and Homework 1
+
+- Waiting lists delays
+
+- PSTAT 234 forms for pick up
+
 ## April 11, 2019
 
 - https://ucsb.zoom.us/j/957723787
