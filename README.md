@@ -4,6 +4,8 @@
 
 ## April 16, 2019
 
+- https://ucsb.zoom.us/my/sy.oh
+
 - Midterm: May 9 during class time
 
 - okpy.org and Homework 1
