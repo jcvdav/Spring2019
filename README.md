@@ -2,6 +2,18 @@
 
 # Announcements
 
+## April 16, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+- Midterm: May 9 during class time
+
+- [okpy.org](https://okpy.org/) and Homework 1
+
+- Waiting lists delays
+
+- PSTAT 234 graduate class petition forms are ready for pick up
+
 ## April 11, 2019
 
 - https://ucsb.zoom.us/j/957723787
