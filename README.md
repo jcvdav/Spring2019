@@ -2,6 +2,24 @@
 
 # Announcements
 
+## April 18, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+- Add codes will be sent today
+
+- Installing packages: e.g., `jassign`  
+    Open terminal and type
+    `pip install git+https://github.com/okpy/jassign`  
+    User installed packages are purged when your session expires
+
+- Generated pdf appears empty in Chrome browser (bug?)
+
+- In 14b, it should read  
+    Funtion `bootstrap_error_bars` is to be called by using `bootstrap_election_100_agg.apply(bootstrap_error_bars, ...)`.
+    
+- [Homework 1 diff](https://github.com/UCSB-PSTAT-134-234/Spring2019/commit/427780d68509aa67a5ba4005732bab393ea92163#diff-79ceed9cf3f84f71011888fd8ab3c90a)
+
 ## April 16, 2019
 
 - https://ucsb.zoom.us/my/sy.oh
