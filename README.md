@@ -4,7 +4,7 @@
 
 ## April 18, 2019
 
-- https://ucsb.zoom.us/my/sy.oh
+- https://ucsb.zoom.us/j/918248601
 
 - Add codes will be sent today
 
