@@ -4,6 +4,8 @@
 
 ## April 23, 2019
 
+- https://ucsb.zoom.us/my/sy.oh
+
 - Homework 2 will be assigned tonight
 
 ## April 18, 2019
