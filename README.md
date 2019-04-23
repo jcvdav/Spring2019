@@ -2,6 +2,10 @@
 
 # Announcements
 
+## April 23, 2019
+
+- Homework 2 will be assigned tonight
+
 ## April 18, 2019
 
 - https://ucsb.zoom.us/j/918248601
