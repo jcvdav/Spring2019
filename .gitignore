@@ -1,6 +1,4 @@
 *.ipynb_checkpoints/
 *.ok_storage.*
 *tests*
-*ok.messages*
-*ok.messages
 *.ok_messages
