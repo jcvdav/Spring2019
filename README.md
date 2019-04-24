@@ -153,8 +153,6 @@
     - Computing: Matplotlib and Scikit-learn
     - Reading: [Chapter 4 (skim) - 5](https://jakevdp.github.io/PythonDataScienceHandbook/index.html#4.-Visualization-with-Matplotlib)
 
-* **In-class midterm** (4/30)
-
 * **Week 5-6** (5/1-5/10): Finance data module
 
 * **Week 7-8** (5/13-5/23): Health data module

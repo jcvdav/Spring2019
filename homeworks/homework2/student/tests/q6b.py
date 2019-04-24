@@ -1,0 +1,12 @@
+test = {   'name': 'q6b',
+    'points': 3,
+    'suites': [   {   'cases': [   {   'code': ">>> ax.get_aspect()\n'equal'",
+                                       'hidden': False,
+                                       'locked': False},
+                                   {   'code': '>>> Rnew.shape\n(388, 388)',
+                                       'hidden': False,
+                                       'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}
