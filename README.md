@@ -2,6 +2,12 @@
 
 # Announcements
 
+## April 23, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+- Homework 2 will be assigned tonight
+
 ## April 18, 2019
 
 - https://ucsb.zoom.us/j/918248601
@@ -146,8 +152,6 @@
 * **Week 3-4** (4/15-4/26): Visualization and exploratory analysis
     - Computing: Matplotlib and Scikit-learn
     - Reading: [Chapter 4 (skim) - 5](https://jakevdp.github.io/PythonDataScienceHandbook/index.html#4.-Visualization-with-Matplotlib)
-
-* **In-class midterm** (4/30)
 
 * **Week 5-6** (5/1-5/10): Finance data module
 
