@@ -2,6 +2,10 @@
 
 # Announcements
 
+## April 26, 2019
+
+- Fixed [lecture 4](https://github.com/UCSB-PSTAT-134-234/Spring2019/blob/master/lecture-notes/04-Pandas-Data-Frame.ipynb)
+
 ## April 23, 2019
 
 - https://ucsb.zoom.us/my/sy.oh
