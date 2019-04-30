@@ -4,9 +4,14 @@
 
 ## April 30, 2019
 
-- Midterm is on May 9
+- https://ucsb.zoom.us/my/sy.oh
 
 - Some updates are made to the homework 2 ([difference](https://github.com/UCSB-PSTAT-134-234/Spring2019/commit/b72a5c17cae6cfbfd9b3ced49af557d314a7c510#diff-e989a9ac5d0803192f0cab040ec1a1b1))
+
+- [Midterm is on May 9](https://github.com/UCSB-PSTAT-134-234/Spring2019/blob/master/README-midterm.md)
+
+- [Final project information](https://github.com/UCSB-PSTAT-134-234/Spring2019/blob/master/README-project.md)
+
 
 ## April 26, 2019
 
