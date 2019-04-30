@@ -7,11 +7,11 @@ You will work on the project in a group of four.
 
 __Project group__: Please work in a group of four. If you cannot find a group of three or four. Feel free to use [Search for Teammates!](https://piazza.com/class/jttf1pa8is5eb?cid=5) feature on Piazza.
 
-__Progress report (Due May 17 at 10 pm)__: A one page document containing your group members, proposed data set, and project outline. Project goals can change.
+__Progress report (Due May 17 at 10 pm on GauchoSpace)__: A one page document containing your group members, proposed data set, and project outline. Project goals can change.
 
 __Poster presentation (June 11, 8-11 am)__: Being able to communicate your project is important. There will be a "[poster session](https://www.youtube.com/watch?v=AwMFhyH7_5g)" during the class final exam time. You will be graded on your poster as well as get feedback from the teaching staff and your classmates.
 
-__Report (Due June 13 at 10 pm)__: You need to provide a Jupyter notebook report of your project. You may use multiple notebooks to separate material into parts (also, in order to avoid any large notebook issues). If your project is not accepted by GauchoSpace due to space limitation (100 MB), prepare a shared zip-archive of complete set of files needed to run your project on Box: https://ucsb.account.box.com/login. Everyone at UCSB has an unlimited storage using this service. Indicate the URL location of your shared zip-archive on your Jupyter notebooks on GauchoSpace, and indicate the shared link on your notebook. Note that any file that needs to be downloaded using API keys, etc, need to be pickled into a separate file(s) and made available in the zipped-archive.
+__Report (Due June 13 at 10 pm on GauchoSpace)__: You need to provide a Jupyter notebook report of your project. You may use multiple notebooks to separate material into parts (also, in order to avoid any large notebook issues). If your project is not accepted by GauchoSpace due to space limitation (100 MB), prepare a shared zip-archive of complete set of files needed to run your project on Box: https://ucsb.account.box.com/login. Everyone at UCSB has an unlimited storage using this service. Indicate the URL location of your shared zip-archive on your Jupyter notebooks on GauchoSpace, and indicate the shared link on your notebook. Note that any file that needs to be downloaded using API keys, etc, need to be pickled into a separate file(s) and made available in the zipped-archive.
 
 ## Possible Project Ideas
 
