@@ -2,6 +2,12 @@
 
 # Announcements
 
+## May 2, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+- [Midterm is on May 9](https://github.com/UCSB-PSTAT-134-234/Spring2019/blob/master/README-midterm.md) Includes up to lecture notes 10
+
 ## April 30, 2019
 
 - https://ucsb.zoom.us/my/sy.oh
