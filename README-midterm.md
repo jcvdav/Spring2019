@@ -2,7 +2,7 @@
 
 Date: May 9, 2019  
 Time: 9:30 - 10:45 am  
-Location: lecture location (PHELP 3516)  
+Location: lecture location (PHELP 3515)  
 
 - You can bring a computer (Make sure it is charged)
 

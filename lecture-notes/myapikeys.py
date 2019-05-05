@@ -1,0 +1,9 @@
+apikeys = { 
+    
+    'quandl':'',
+    
+    'yelp':'',
+    
+    'fred':'',
+    
+}
