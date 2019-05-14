@@ -2,6 +2,10 @@
 
 # Announcements
 
+## May 14, 2019
+
+- Final project progress report due on May 17. Submit on [GauchoSpace](https://gauchospace.ucsb.edu/courses/mod/assign/view.php?id=2166912&forceview=1)
+
 ## May 9, 2019
 
 - https://ucsb.zoom.us/my/sy.oh
