@@ -2,6 +2,16 @@
 
 # Announcements
 
+[Open course git repository with Jupyter Notebook](https://pstat134.lsit.ucsb.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FUCSB-PSTAT-134-234%2FSpring2019&urlpath=tree%2FSpring2019%2F)
+
+## May 14, 2019
+
+- Final project progress report due on May 17. Submit on [GauchoSpace](https://gauchospace.ucsb.edu/courses/mod/assign/view.php?id=2166912&forceview=1)
+
+## May 9, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
 ## May 2, 2019
 
 - https://ucsb.zoom.us/my/sy.oh
