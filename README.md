@@ -4,6 +4,14 @@
 
 [Open course git repository with Jupyter Notebook](https://pstat134.lsit.ucsb.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FUCSB-PSTAT-134-234%2FSpring2019&urlpath=tree%2FSpring2019%2F)
 
+## May 30, 2019
+
+- Homework 3 will not be given to give time for final project
+
+- My office hours are W 5-7 pm (South Hall 5514), TR 6:15-7:15 pm (HSSB 1174 or South Hall 1430 as needed)
+
+- Course server memory has been increased to 4GB
+
 ## May 21, 2019
 
 - [Pull Health Module repository](https://pstat134.lsit.ucsb.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fevidation-health%2FEvidationDataScienceModule&urlpath=tree%2FEvidationDataScienceModule%2F2019_flu_analysis%2FInfluenza-Analysis.ipynb)
