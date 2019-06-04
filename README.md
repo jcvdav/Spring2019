@@ -2,6 +2,96 @@
 
 # Announcements
 
+[Open course git repository with Jupyter Notebook](https://pstat134.lsit.ucsb.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FUCSB-PSTAT-134-234%2FSpring2019&urlpath=tree%2FSpring2019%2F)
+
+## May 30, 2019
+
+- Homework 3 will not be given to give time for final project
+
+- My office hours are W 5-7 pm (South Hall 5514), TR 6:15-7:15 pm (HSSB 1174 or South Hall 1430 as needed)
+
+- Course server memory has been increased to 4GB
+
+## May 21, 2019
+
+- [Pull Health Module repository](https://pstat134.lsit.ucsb.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fevidation-health%2FEvidationDataScienceModule&urlpath=tree%2FEvidationDataScienceModule%2F2019_flu_analysis%2FInfluenza-Analysis.ipynb)
+
+## May 14, 2019
+
+- Final project progress report due on May 17. Submit on [GauchoSpace](https://gauchospace.ucsb.edu/courses/mod/assign/view.php?id=2166912&forceview=1)
+
+## May 9, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+## May 2, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+- [Midterm is on May 9](https://github.com/UCSB-PSTAT-134-234/Spring2019/blob/master/README-midterm.md) Includes up to lecture notes 10
+
+## April 30, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+- Some updates are made to the homework 2 ([difference](https://github.com/UCSB-PSTAT-134-234/Spring2019/commit/b72a5c17cae6cfbfd9b3ced49af557d314a7c510#diff-e989a9ac5d0803192f0cab040ec1a1b1))
+
+- [Midterm is on May 9](https://github.com/UCSB-PSTAT-134-234/Spring2019/blob/master/README-midterm.md)
+
+- [Final project information](https://github.com/UCSB-PSTAT-134-234/Spring2019/blob/master/README-project.md)
+
+
+## April 26, 2019
+
+- Fixed [lecture 4](https://github.com/UCSB-PSTAT-134-234/Spring2019/blob/master/lecture-notes/04-Pandas-Data-Frame.ipynb)
+
+## April 23, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+- Homework 2 will be assigned tonight
+
+## April 18, 2019
+
+- https://ucsb.zoom.us/j/918248601
+
+- Add codes will be sent today
+
+- Installing packages: e.g., `jassign`  
+    Open terminal and type
+    `pip install git+https://github.com/okpy/jassign`  
+    User installed packages are purged when your session expires
+
+- Generated pdf appears empty in Chrome browser (bug?)
+
+- In 14b, it should read  
+    Funtion `bootstrap_error_bars` is to be called by using `bootstrap_election_100_agg.apply(bootstrap_error_bars, ...)`.
+    
+- [Homework 1 diff](https://github.com/UCSB-PSTAT-134-234/Spring2019/commit/427780d68509aa67a5ba4005732bab393ea92163#diff-79ceed9cf3f84f71011888fd8ab3c90a)
+
+## April 16, 2019
+
+- https://ucsb.zoom.us/my/sy.oh
+
+- Midterm: May 9 during class time
+
+- [okpy.org](https://okpy.org/) and Homework 1
+
+- Waiting lists delays
+
+- PSTAT 234 graduate class petition forms are ready for pick up
+
+## April 11, 2019
+
+- https://ucsb.zoom.us/j/957723787
+
+- Homework 1 has been posted (due Saturday, April 20)  
+    https://bit.ly/2Ku27wH
+    
+- _Petition to Enroll in a Graduate Course_ forms will be processed by tomorrow morning
+
+- Request access to GauchoSpace: https://piazza.com/class/jttf1pa8is5eb?cid=12
+
 ## April 9, 2019
 
 - https://ucsb.zoom.us/j/275657667
@@ -105,8 +195,6 @@
 * **Week 3-4** (4/15-4/26): Visualization and exploratory analysis
     - Computing: Matplotlib and Scikit-learn
     - Reading: [Chapter 4 (skim) - 5](https://jakevdp.github.io/PythonDataScienceHandbook/index.html#4.-Visualization-with-Matplotlib)
-
-* **In-class midterm** (4/30)
 
 * **Week 5-6** (5/1-5/10): Finance data module
 
