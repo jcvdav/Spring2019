@@ -3,3 +3,4 @@
 *tests*
 *.ok_messages
 .Rproj.user
+.httr-oauth
