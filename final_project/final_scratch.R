@@ -76,7 +76,7 @@ countries <- c("CHN", "ESP", "JPN", "KOR", "PRT", "TWN", "USA", "VUT")
 nmf_data <- monthly_fishing_pacific %>%
   filter(best_flag %in% countries) %>%
   drop_na(best_flag) %>%
-  filter(lat > 0) %>%
+  # filter(lat > 0) %>%
   group_by(best_flag, lon, lat) %>%
   summarize(hours = sum(hours, na.rm = T)) %>%
   ungroup() %>%
@@ -87,9 +87,13 @@ nmf_data <- monthly_fishing_pacific %>%
   select(-best_flag) %>%
   as.matrix()
 
-# nmf_data <- readRDS(here("final_project", "nmf_data.rds"))
+nmf_data <- readRDS(here("final_project", "nmf_data.rds"))
 
-res <- nmf(nmf_data, 8)
+r <- c(3, 5, 7, 9)
+
+res <- nmf(nmf_data, r, nrun = 5)
+
+save(res, file='result.RData')
 
 W <- basis(res)
 h <- coef(res)
