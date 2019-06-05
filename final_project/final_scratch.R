@@ -73,19 +73,18 @@ countries <- c("CHN", "ESP", "JPN", "KOR", "PRT", "TWN", "USA", "VUT")
 #   scale_fill_gradientn(colours = colorRamps::matlab.like(20), trans = "log10") +
 #   ggtheme_plot()
 
-nmf_data <- monthly_fishing_pacific %>%
-  filter(best_flag %in% countries) %>%
-  drop_na(best_flag) %>%
-  # filter(lat > 0) %>%
-  group_by(best_flag, lon, lat) %>%
-  summarize(hours = sum(hours, na.rm = T)) %>%
-  ungroup() %>%
-  filter(hours > 0) %>%
-  mutate(lonlat = paste(lon, lat, sep = "_")) %>%
-  select(best_flag, lonlat, hours) %>%
-  spread(lonlat, hours, fill = 0) %>%
-  select(-best_flag) %>%
-  as.matrix()
+# nmf_data <- monthly_fishing_pacific %>%
+#   filter(best_flag %in% countries) %>%
+#   drop_na(best_flag) %>%
+#   group_by(best_flag, lon, lat) %>%
+#   summarize(hours = sum(hours, na.rm = T)) %>%
+#   ungroup() %>%
+#   filter(hours > 0) %>%
+#   mutate(lonlat = paste(lon, lat, sep = "_")) %>%
+#   select(best_flag, lonlat, hours) %>%
+#   spread(lonlat, hours, fill = 0) %>%
+#   select(-best_flag) %>%
+#   as.matrix()
 
 nmf_data <- readRDS(here("final_project", "nmf_data.rds"))
 
@@ -114,7 +113,7 @@ X_pred <- X_bar %>%
          lat = as.numeric(lat),
          hours = as.numeric(hours))
 
-features <- cbind(c(LETTERS[1:8]), h)
+features <- cbind(c(LETTERS[r]), h)
 
 colnames(features) <- c("feature", colnames(nmf_data))
   
