@@ -89,7 +89,7 @@ nmf_data <- monthly_fishing_pacific %>%
 
 # nmf_data <- readRDS(here("final_project", "nmf_data.rds"))
 
-res <- nmf(nmf_data, 8)
+res <- nmf(nmf_data, 8, .options = "t")
 
 W <- basis(res)
 h <- coef(res)
