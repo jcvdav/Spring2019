@@ -88,11 +88,11 @@ countries <- c("CHN", "ESP", "JPN", "KOR", "PRT", "TWN", "USA", "VUT")
 
 nmf_data <- readRDS(here("final_project", "nmf_data.rds"))
 
-r <- c(3, 5, 7, 9)
+# r <- c(3, 5, 7, 9)
 
-res <- nmf(nmf_data, r, nrun = 5)
+res <- nmf(nmf_data, 10)
 
-save(res, file='result.RData')
+saveRDS(res, file = here("final_project", "res.rds"))
 
 W <- basis(res)
 h <- coef(res)
@@ -113,7 +113,7 @@ X_pred <- X_bar %>%
          lat = as.numeric(lat),
          hours = as.numeric(hours))
 
-features <- cbind(c(LETTERS[r]), h)
+features <- cbind(c(LETTERS[1:10]), h)
 
 colnames(features) <- c("feature", colnames(nmf_data))
   
@@ -128,6 +128,8 @@ features <- features %>%
          lat = as.numeric(lat),
          days = as.numeric(hours) / 24)
 
+coast <- rnaturalearth::ne_coastline(returnclass = "sf")
+
 ggplot(data = features) +
   geom_raster(aes(x = lon, y = lat, fill = days)) +
   geom_sf(data = coast) +
@@ -135,7 +137,6 @@ ggplot(data = features) +
   scale_fill_gradientn(colours = colorRamps::matlab.like(20), trans = "log10") +
   ggtheme_plot()
 
-coast <- rnaturalearth::ne_coastline(returnclass = "sf")
 
 ggplot(data = X_pred) +
   geom_raster(aes(x = lon, y = lat, fill = hours)) +
