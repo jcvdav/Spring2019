@@ -1,0 +1,220 @@
+---
+title: "Untitled"
+author: "Villaseñor-Derbez J.C."
+date: "11/6/2019"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+# Introduction
+
+# Data and methods
+
+## About the data
+
+## Data wrangling
+
+The data live in GoogleBigQuery. I used the following SQL script to create a gridded version of monthly fishing effort by countri. I bin all points (latitude and longitude data) on to a 0.5 by 0.5 degree grid. The summarized data resulting from this is still too big to directly download as a `*.csv` from BigQuery - the data has 585,874 rows.
+
+```{sql, eval = F}
+# Get vessel info (flag and id) by ssvid (unique vessel identifiers)
+WITH
+  longline_info AS (
+  SELECT
+    year, #Vessels might change flags through time, so I need this
+    CAST(ssvid AS STRING) AS ssvid,
+    best.best_flag
+  FROM
+    `world-fishing-827.gfw_research.vi_ssvid_byyear_v20190430`
+  WHERE
+    best.best_vessel_class = "drifting_longlines" ),
+  #
+  #
+  #
+  #
+  ########
+  # The following lines create a gridded version of the
+  # track data at the year-month-vessel level
+  tracks AS (
+  SELECT
+    EXTRACT(YEAR
+    FROM
+      _Partitiontime) AS year,
+    EXTRACT(MONTH
+    FROM
+      _Partitiontime) AS month,
+    ssvid,
+    ROUND(FLOOR(lat/1)*1 + 0.5, 2) AS lat,
+    ROUND(FLOOR(lon/1)*1 + 0.5, 2) AS lon,
+    SUM(hours) AS hours
+  FROM
+    `world-fishing-827.gfw_research.pipe_production_b_fishing`
+  CROSS JOIN
+    UNNEST(regions.ocean) AS ocean
+  WHERE
+    ssvid IN (
+    SELECT
+      DISTINCT(ssvid)
+    FROM
+      longline_info)
+    AND nnet_score > 0.5
+  GROUP BY
+    year,
+    month,
+    ssvid,
+    lat,
+    lon),
+  #
+  #
+  #
+  #
+  ########
+  # Join girdded tracks and vessel info
+  tracks_and_info AS (
+  SELECT
+    *
+  FROM
+    tracks
+  LEFT JOIN
+    longline_info
+  USING
+    (year,
+      ssvid))
+  #
+  #
+  #
+  #
+  ########
+  # Group the data by flag
+SELECT
+  year,
+  month,
+  best_flag,
+  lon,
+  lat,
+  SUM(hours) AS hours
+FROM
+  tracks_and_info
+GROUP BY
+  year,
+  month,
+  best_flag,
+  lon,
+  lat
+```
+
+All of the following chunks contain R code. First, I need to load some packages.
+
+```{r load_pkg}
+# Load packages
+suppressPackageStartupMessages({
+  library(here) #For filepath managing
+  library(startR) #Personal package with themes and wrappers
+  library(NMF) #NMF package
+  library(rnaturalearth) # Coastline data
+  library(tidyverse) #Wrangling and plotting data
+})
+```
+
+To get the data from GoogleBigQuery (`GBQ`), I run a custom-made function that `collect`s an entire table, given a `GBQ` connection.
+
+```{r collect_data, eval = F}
+# Collect the data
+# You won't be able to run this, because you need an authentication
+# token to connect to GoogleBigQuery
+monthly_fishing <- startR::get_table(project = "ucsb-gfw",
+                                     dataset = "jc_scratch",
+                                     table = "monthly_fishing")
+```
+
+Since the connection requires authentication, I've exported the data as a `*.csv` file and then read it back in.
+
+```{r, eval = F}
+# Save the data to disk
+write.csv(x = monthly_fishing,
+          file = here("final_project", "data", "monthly_fishing.csv"),
+          row.names = F)
+```
+
+```{r}
+# Read the data back in
+monthly_fishing <- read.csv(here("final_project",
+                                 "monthly_fishing.csv"), 
+                            stringsAsFactors = F)
+```
+
+
+The first few rows of the data look like this:
+
+```{r}
+head(monthly_fishing, 10) %>% 
+  knitr::kable(booktabs = T)
+```
+
+There are many countries in the data, and running NMF on all of them would be computationally intensive and expensive. Instead, I focus on the top 8 fishing nations, which account for more than 85\% of fishing effort in the high seas. I visualize the data by calculating the total pixel-level effort (days) spent by all vessels from a given country from 2012 to present.
+
+
+```{r, fig.width = 6, fig.height = 12}
+# Define countries I need
+# using their ISO3 codes
+countries <- c("CHN", "ESP", "JPN", "KOR", "PRT", "TWN", "USA", "VUT")
+
+global_fishing <- monthly_fishing %>%
+  filter(best_flag %in% countries) %>% #Filter by country
+  drop_na(best_flag) %>% #Filter unflagged vessels
+  group_by(best_flag, lon, lat) %>% #Group by flag and pixel
+  summarize(days = sum(hours, na.rm = T) / 24) %>% #calculate days
+  ungroup()
+
+# Get the world's coastline
+coast <- ne_coastline(returnclass = "sf")
+
+# Visualize with ggplot
+ggplot(data = global_fishing) +
+  geom_raster(aes(x = lon, y = lat, fill = days)) +
+  geom_sf(data = coast) +
+  facet_wrap(~best_flag, ncol = 2) +
+  scale_fill_gradientn(colours = colorRamps::matlab.like(20), trans = "log10") +
+  ggtheme_plot()
+```
+
+You cna think of the above maps as pictures of different individuals. Each country is an individual, and the areas where they fish are different characteristics of their face. It is also the equivalent of mapping points taken by NBA players from different positions in a court.
+
+Therefore, I must now create my $p$ matrix, where each row is a country (8) and each column is a combination of latitude-longitude pairs. There are 720 * 180 pixels on each map, however not all of the possible combinations occur in the ocean. Therefore, I won't have the expected 129,600 columns (which would be too many!). Instead, I have just 19,720. A much more managable dataset. 
+
+```{r}
+nmf_data <- global_fishing %>% 
+  filter(days > 0) %>% # Just in case
+  mutate(lonlat = paste(lon, lat, sep = "_")) %>% # Create a pair identifier
+  select(best_flag, lonlat, days) %>% 
+  spread(lonlat, days, fill = 0) %>% #Flatten my table into a row
+  select(-best_flag) %>% # Remove the flag identifier
+  as.matrix() #matrix
+```
+
+
+With my $p$ matrix ready, I can now run $NMF$ and to calculate $h$ and $W$, which describe my data. The `NMF` package in R can automatically implement paralellization of NMF. In this case, I need it because I will try 30 random starts for 6 different possible values of r, the number of features that I want to describe my data with. The following lines of code set it up, run it, and save it.
+
+```{r}
+r <- c(3, 5, 8, 10, 15, 20)
+
+res <- nmf(nmf_data, r, runs = 30)
+
+saveRDS(res, file = here("final_project", "res.rds"))
+```
+
+
+## Analysis
+
+
+# Results
+
