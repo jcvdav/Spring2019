@@ -4,5 +4,5 @@ cd $SLURM_SUBMIT_DIR
 
 module load R
 
-Rscript Spring2019/test.R
+Rscript test.R
 
