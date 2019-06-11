@@ -163,7 +163,7 @@ head(monthly_fishing, 10) %>%
 There are many countries in the data, and running NMF on all of them would be computationally intensive and expensive. Instead, I focus on the top 8 fishing nations, which account for more than 85\% of fishing effort in the high seas. I visualize the data by calculating the total pixel-level effort (days) spent by all vessels from a given country from 2012 to present.
 
 
-```{r, fig.width = 6, fig.height = 12}
+```{r, fig.width = 6, fig.height = 9}
 # Define countries I need
 # using their ISO3 codes
 countries <- c("CHN", "ESP", "JPN", "KOR", "PRT", "TWN", "USA", "VUT")
@@ -204,7 +204,7 @@ nmf_data <- global_fishing %>%
 
 With my $p$ matrix ready, I can now run $NMF$ and to calculate $h$ and $W$, which describe my data. The `NMF` package in R can automatically implement paralellization of NMF. In this case, this is useful because I will try 30 random starts for 6 different possible values of `r` (the number of features with which I want to describe my data). The following lines of code set it up, run it, and save it.
 
-```{r}
+```{r, eval = F}
 # Define possible data sizes
 r <- c(3, 5, 8, 10, 15, 20)
 
