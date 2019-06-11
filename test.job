@@ -1,0 +1,8 @@
+#SBATCH --nodes=2 --ntasks-per-node 40
+
+cd $SLURM_SUBMIT_DIR
+
+module load R
+
+Rscript Spring2019/test.R
+

@@ -202,9 +202,10 @@ nmf_data <- global_fishing %>%
 ```
 
 
-With my $p$ matrix ready, I can now run $NMF$ and to calculate $h$ and $W$, which describe my data. The `NMF` package in R can automatically implement paralellization of NMF. In this case, I need it because I will try 30 random starts for 6 different possible values of r, the number of features that I want to describe my data with. The following lines of code set it up, run it, and save it.
+With my $p$ matrix ready, I can now run $NMF$ and to calculate $h$ and $W$, which describe my data. The `NMF` package in R can automatically implement paralellization of NMF. In this case, this is useful because I will try 30 random starts for 6 different possible values of `r` (the number of features with which I want to describe my data). The following lines of code set it up, run it, and save it.
 
 ```{r}
+# Define possible data sizes
 r <- c(3, 5, 8, 10, 15, 20)
 
 res <- nmf(nmf_data, r, runs = 30)
