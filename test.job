@@ -1,5 +1,5 @@
 #!bin/bash -l
-#SBATCH --nodes=1 --ntasks-per-node=40
+#SBATCH --nodes=1 --ntasks-per-node=30
 
 cd $SLURM_SUBMIT_DIR
 
