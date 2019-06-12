@@ -208,14 +208,52 @@ With my $p$ matrix ready, I can now run $NMF$ and to calculate $h$ and $W$, whic
 # Define possible data sizes
 r <- c(3, 5, 8, 10, 15, 20)
 
-res <- nmf(nmf_data, r, runs = 30)
+# Implement NMF with 30 random starts for each possible value of r
+res <- nmf(nmf_data, r, nrun = 30)
 
+# Save the results as an RDS file
 saveRDS(res, file = here("final_project", "res.rds"))
 ```
+
+Running NMF 30 times across 6 parameters is computationally intensive. I ran an initial, smaller test on a VM on Google ComputeEngine. The machine had 64 processors and 200 GB RAM. It took about 13 hours. An alternative is to run this code in the POD cluster, which is currently at 100\% usage. The `SLURM` job submission file would be something like this:
+
+```{}
+#!bin/bash -l
+#SBATCH --nodes=1 --ntasks-per-node=1
+#SBATCH --mail-user=juancarlos@ucsb.edu
+#SBATCH --mail-type=start,end
+cd $SLURM_SUBMIT_DIR
+module load R
+Rscript final_project/scripts/run_nmf.R
+```
+
+The corresponding script (`run_nmf.R`) has the same code as the lines above, plus the library loading. It can be found on [GitHub](https://github.com/jcvdav/Spring2019/blob/master/final_project/scripts/run_nmf.R).
+
 
 
 ## Analysis
 
 
 # Results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
