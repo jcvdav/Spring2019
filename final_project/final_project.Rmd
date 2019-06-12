@@ -163,7 +163,7 @@ head(monthly_fishing, 10) %>%
 There are many countries in the data, and running NMF on all of them would be computationally intensive and expensive. Instead, I focus on the top 8 fishing nations, which account for more than 85\% of fishing effort in the high seas. I visualize the data by calculating the total pixel-level effort (days) spent by all vessels from a given country from 2012 to present.
 
 
-```{r, fig.width = 6, fig.height = 9}
+```{r, fig.width = 6, fig.height = 9, fig.cap = "Fishing footrpint for longliners of the 8 main fishiing countries."}
 # Define countries I need
 # using their ISO3 codes
 countries <- c("CHN", "ESP", "JPN", "KOR", "PRT", "TWN", "USA", "VUT")
@@ -187,7 +187,7 @@ ggplot(data = global_fishing) +
   ggtheme_plot()
 ```
 
-You cna think of the above maps as pictures of different individuals. Each country is an individual, and the areas where they fish are different characteristics of their face. It is also the equivalent of mapping points taken by NBA players from different positions in a court.
+You can think of the above maps as pictures of different individuals. Each country is an individual, and the areas where they fish are different characteristics of their face. It is also the equivalent of mapping points taken by NBA players from different positions in a court.
 
 Therefore, I must now create my $p$ matrix, where each row is a country (8) and each column is a combination of latitude-longitude pairs. There are 720 * 180 pixels on each map, however not all of the possible combinations occur in the ocean. Therefore, I won't have the expected 129,600 columns (which would be too many!). Instead, I have just 19,720. A much more managable dataset. 
 
@@ -201,6 +201,7 @@ nmf_data <- global_fishing %>%
   as.matrix() #matrix
 ```
 
+## Analysis
 
 With my $p$ matrix ready, I can now run $NMF$ and to calculate $h$ and $W$, which describe my data. The `NMF` package in R can automatically implement paralellization of NMF. In this case, this is useful because I will try 30 random starts for 6 different possible values of `r` (the number of features with which I want to describe my data). The following lines of code set it up, run it, and save it.
 
@@ -219,7 +220,7 @@ Running NMF 30 times across 6 parameters is computationally intensive. I ran an 
 
 ```{}
 #!bin/bash -l
-#SBATCH --nodes=1 --ntasks-per-node=1
+#SBATCH --nodes=1 --ntasks-per-node=20
 #SBATCH --mail-user=juancarlos@ucsb.edu
 #SBATCH --mail-type=start,end
 cd $SLURM_SUBMIT_DIR
@@ -227,14 +228,83 @@ module load R
 Rscript final_project/scripts/run_nmf.R
 ```
 
-The corresponding script (`run_nmf.R`) has the same code as the lines above, plus the library loading. It can be found on [GitHub](https://github.com/jcvdav/Spring2019/blob/master/final_project/scripts/run_nmf.R).
+The corresponding script (`run_nmf.R`) has the same code as the lines above, plus the library loading. It can be found on [GitHub](https://github.com/jcvdav/Spring2019/blob/master/final_project/scripts/run_nmf.R). POD usage has been maxed out over the last week. I have not been able to re-run this code for the purpose of this report. Instead, I will read in the results from a test run with $r = 10$. 
 
-
-
-## Analysis
-
+```{r}
+# Read in old run
+res <- readRDS(file = here("final_project", "res.rds"))
+```
 
 # Results
+
+The following figure shows the 10 different features identified.
+
+```{r, fig.width = 6, fig.height = 9, fig.cap = "Features (10) describing the footrpint of different countries."}
+
+# Extract basis
+W <- basis(res)
+
+# Extract coefficients
+h <- coef(res)
+
+# Add a column with letters to name each feature
+features <- cbind(c(LETTERS[1:10]), h)
+
+# Set columnames
+colnames(features) <- c("feature", colnames(nmf_data))
+
+# Create a tibble and use the lonlat variable
+# to reconstruct the latitude and longitudes
+features <- features %>% 
+  as_tibble() %>% 
+  gather(lonlat, days, -feature) %>% 
+  mutate(lon = str_extract(lonlat, ".+_"),
+         lat = str_extract(lonlat, "_.+"),
+         lon = str_remove(lon, "_"),
+         lat = str_remove(lat, "_"),
+         lon = as.numeric(lon),
+         lat = as.numeric(lat),
+         days = as.numeric(days))
+
+# Visualie the 10 different features
+(global_features <- ggplot(data = features) +
+  geom_raster(aes(x = lon, y = lat, fill = days)) +
+  geom_sf(data = coast) +
+  facet_wrap(~feature, ncol = 2) +
+  scale_fill_gradientn(colours = colorRamps::matlab.like(20), trans = "log10") +
+  ggtheme_plot() +
+  theme(legend.position = "top"))
+
+# Save plot
+ggsave(plot = global_features,
+       filename = here("final_project", "global_features.png"),
+       width = 7.5,
+       height = 10)
+```
+
+
+```{r, fig.width = 6, fig.height = 9, fig.cap = "Reconstructed footrping of fishing activity for the top 8 fishing countries in the world."}
+# Reconstruct footrpint by country
+X_bar <- W %*% h
+# Assign
+X_bar <- cbind(countries, X_bar)
+
+colnames(X_bar) <- c("country", colnames(nmf_data))
+
+X_pred <- X_bar %>% 
+  as_tibble() %>% 
+  gather(lonlat, hours, -country) %>% 
+  mutate(lon = str_extract(lonlat, ".+_"),
+         lat = str_extract(lonlat, "_.+"),
+         lon = str_remove(lon, "_"),
+         lat = str_remove(lat, "_"),
+         lon = as.numeric(lon),
+         lat = as.numeric(lat),
+         hours = as.numeric(hours))
+```
+
+
+
 
 
 
