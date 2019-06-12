@@ -3,8 +3,6 @@
 #SBATCH --time=18:00:00
 #SBATCH --mail-user=juancarlos@ucsb.edu
 #SBATCH --mail-type=start,end
-
 cd $SLURM_SUBMIT_DIR
-
+module load R
 Rscript --vanilla test.R
-
