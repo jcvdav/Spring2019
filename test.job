@@ -1,12 +1,10 @@
 #!bin/bash -l
-#SBATCH --nodes=1 --ntasks-per-node=10
+#SBATCH --nodes=1 --ntasks-per-node=12
 #SBATCH --time=18:00:00
 #SBATCH --mail-user=juancarlos@ucsb.edu
 #SBATCH --mail-type=start,end
 
-module load R
-
 cd $SLURM_SUBMIT_DIR
 
-Rscript test.R
+Rscript --vanilla test.R
 
