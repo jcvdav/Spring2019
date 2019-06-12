@@ -4,9 +4,9 @@
 #SBATCH --mail-user=juancarlos@ucsb.edu
 #SBATCH --mail-type=start,end
 
-cd $SLURM_SUBMIT_DIR
-
 module load R
+
+cd $SLURM_SUBMIT_DIR
 
 Rscript test.R
 
