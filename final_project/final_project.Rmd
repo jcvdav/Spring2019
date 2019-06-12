@@ -1,7 +1,7 @@
 ---
-title: "Untitled"
+title: "Decomposing the global footprint of fisheries"
 author: "Villaseñor-Derbez J.C."
-date: "11/6/2019"
+date: "PSTAT - 234 Final Project"
 output:
   html_document:
     toc: yes
@@ -17,13 +17,21 @@ knitr::opts_chunk$set(echo = TRUE,
 
 # Introduction
 
+Recent advances in remote sensing and machine learning allow us to track fishing effort of industrial vessels from space. This has the potential to change the way in which we think about and mange fisheries and the oceans in general. Each coastal nation is entitled to the first 200 nautical miles extending from their coastline. These areas are known as Exclusive Economic Zones (EEZs).
+
+While fishing activity within an EEZ is limited to a country (which may or may not allow for other countries to fish within it), areas beyond national jurisdiction, also known as the High Seas, are not under any regulation. In these waters, fishing effort by each country is distributed as a function of the costs to the fleet and the location of species they target. These data, of course, are often difficult to obtain. But can we identify the spatial pattern of fishing effort by each country? In this project, I will use NMF as a first attempt to describe the spatial footprint of fisheries of each country.
+
 # Data and methods
 
 ## About the data
 
+Large industrial vessels around the world carry Automatic Identification Systems (AIS) as on-board anti-collision devices. The transponders broadcast vessel position and activity to surrounding vessels, and provides a continuous stream of vessel location through time.
+
+Global Fishing Watch ([GFW](globalfishingwatch.org/map)) uses these AIS signals to reconstruct fishing activity. In summary, they use two classification steps. First, they classify vessels into non-fishing (*e.g.* shipping) and fishing (*e.g.* tuna purse seining) vessels. The second step classifies individual fishing points for all fishing vessels. They classify each point as fishing / not fishing, effectively generating a table with lat, lon, and fishing hours, which we can use to generate the footprint of fishing.
+
 ## Data wrangling
 
-The data live in GoogleBigQuery. I used the following SQL script to create a gridded version of monthly fishing effort by countri. I bin all points (latitude and longitude data) on to a 0.5 by 0.5 degree grid. The summarized data resulting from this is still too big to directly download as a `*.csv` from BigQuery - the data has 585,874 rows.
+The GFW data live in GoogleBigQuery. I used the following SQL script to create a gridded version of monthly fishing effort by countri. I bin all points (latitude and longitude data) on to a 0.5 by 0.5 degree grid. The summarized data resulting from this is still too big to directly download as a `*.csv` from BigQuery - the data has 585,874 rows.
 
 ```{sql, eval = F}
 # Get vessel info (flag and id) by ssvid (unique vessel identifiers)
@@ -162,7 +170,6 @@ head(monthly_fishing, 10) %>%
 
 There are many countries in the data, and running NMF on all of them would be computationally intensive and expensive. Instead, I focus on the top 8 fishing nations, which account for more than 85\% of fishing effort in the high seas. I visualize the data by calculating the total pixel-level effort (days) spent by all vessels from a given country from 2012 to present.
 
-
 ```{r, fig.width = 6, fig.height = 9, fig.cap = "Fishing footrpint for longliners of the 8 main fishiing countries."}
 # Define countries I need
 # using their ISO3 codes
@@ -184,7 +191,10 @@ ggplot(data = global_fishing) +
   geom_sf(data = coast) +
   facet_wrap(~best_flag, ncol = 2) +
   scale_fill_gradientn(colours = colorRamps::matlab.like(20), trans = "log10") +
-  ggtheme_plot()
+  ggtheme_plot() +
+  guides(fill = guide_colorbar(title = "Days",
+                               frame.colour = "black",
+                               ticks.colour = "black"))
 ```
 
 You can think of the above maps as pictures of different individuals. Each country is an individual, and the areas where they fish are different characteristics of their face. It is also the equivalent of mapping points taken by NBA players from different positions in a court.
@@ -237,7 +247,7 @@ res <- readRDS(file = here("final_project", "res.rds"))
 
 # Results
 
-The following figure shows the 10 different features identified.
+Figure 2 shows the 10 different features identified. More features are probably a better approximation of the problem. However, that was computationally intensive and I was not abe to run them in time. However, NMF proved to be relatively simple to implement, and can accurately produce estimations of fishing footprint. For example, pannel 2B shows features that correspond to effort along the China sea, while Panel 2D shows the intense fishing effort within Chinese exclusive economic zone. Panels G and H correspond to activity by the Portuguese ans Spanish fleets. 
 
 ```{r, fig.width = 6, fig.height = 9, fig.cap = "Features (10) describing the footrpint of different countries."}
 
@@ -251,7 +261,7 @@ h <- coef(res)
 features <- cbind(c(LETTERS[1:10]), h)
 
 # Set columnames
-colnames(features) <- c("feature", colnames(nmf_data))
+colnames(features) <- c("feature", colnames(h))
 
 # Create a tibble and use the lonlat variable
 # to reconstruct the latitude and longitudes
@@ -268,12 +278,14 @@ features <- features %>%
 
 # Visualie the 10 different features
 (global_features <- ggplot(data = features) +
-  geom_raster(aes(x = lon, y = lat, fill = days)) +
-  geom_sf(data = coast) +
-  facet_wrap(~feature, ncol = 2) +
-  scale_fill_gradientn(colours = colorRamps::matlab.like(20), trans = "log10") +
-  ggtheme_plot() +
-  theme(legend.position = "top"))
+    geom_raster(aes(x = lon, y = lat, fill = days)) +
+    geom_sf(data = coast) +
+    facet_wrap(~feature, ncol = 2) +
+    scale_fill_gradientn(colours = colorRamps::matlab.like(20), trans = "log10") +
+    guides(fill = guide_colorbar(title = "Days",
+                                 frame.colour = "black",
+                                 ticks.colour = "black")) +
+    ggtheme_plot())
 
 # Save plot
 ggsave(plot = global_features,
@@ -282,6 +294,7 @@ ggsave(plot = global_features,
        height = 10)
 ```
 
+The spatial extent of the reconstruction (Fig. 3) matches the spatial extent of the original countries (Fig. 1). However, the magnitude of individual pixels seems to have much more error. This is likely due to the fact that fishing effort is log-normally distributed across pixels, as shown in the Figure 4.
 
 ```{r, fig.width = 6, fig.height = 9, fig.cap = "Reconstructed footrping of fishing activity for the top 8 fishing countries in the world."}
 # Reconstruct footrpint by country
@@ -289,8 +302,11 @@ X_bar <- W %*% h
 # Assign
 X_bar <- cbind(countries, X_bar)
 
-colnames(X_bar) <- c("country", colnames(nmf_data))
+# Set column names
+colnames(X_bar) <- c("country", colnames(h))
 
+# Convert to a tibble and use latlon 
+# to recreate latitude and longitudes
 X_pred <- X_bar %>% 
   as_tibble() %>% 
   gather(lonlat, hours, -country) %>% 
@@ -301,11 +317,36 @@ X_pred <- X_bar %>%
          lon = as.numeric(lon),
          lat = as.numeric(lat),
          hours = as.numeric(hours))
+
+# Plot it
+(global_reconstructued <- ggplot(data = X_pred) +
+    geom_raster(aes(x = lon, y = lat, fill = hours)) +
+    geom_sf(data = coast) +
+    facet_wrap(~country, ncol = 2) +
+    scale_fill_gradientn(colours = colorRamps::matlab.like(20), trans = "log10") +
+    guides(fill = guide_colorbar(title = "Days",
+                                 frame.colour = "black",
+                                 ticks.colour = "black")) +
+    ggtheme_plot())
+
+# Save the plot
+ggsave(plot = global_reconstructued,
+       filename = here("final_project", "global_reconstructued.png"),
+       width = 7.5,
+       height = 10)
 ```
 
 
+```{r, fig.cap = "Kernel density plot for *root-transformed* fishing hours per pixel. Note that even after square-root transformation, effort is highly skewed."}
+ggplot(data = global_fishing, aes(x = sqrt(days), fill = best_flag)) +
+  geom_density(alpha = 0.5) +
+  ggtheme_plot() +
+  guides(fill = guide_legend(title = "Flag\n(ISO3 code)"))
+```
 
+# Future steps
 
+We have successfully described the spatial footprint of fisheries of each country. Evidently, many more factors derive the distribution of fishing effort, such as the distribution of fish and productivity of the waters. In following efforts, I will use enviornmental covariates and a regression approach to attempt to describe the relative influence and processes behind the distribution of fishing effort. 
 
 
 
